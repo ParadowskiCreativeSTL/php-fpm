@@ -1,3 +1,4 @@
+FROM wordpress:cli as wordpress-cli
 FROM php:fpm
 
 # install the PHP extensions we need
@@ -38,3 +39,6 @@ RUN { \
     echo 'opcache.fast_shutdown=1'; \
     echo 'opcache.enable_cli=1'; \
     } > /usr/local/etc/php/conf.d/opcache-recommended.ini
+
+# install wp-cli
+COPY --from=wordpress-cli /usr/local/bin/wp /usr/local/bin/
