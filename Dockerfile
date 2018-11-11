@@ -1,5 +1,5 @@
 FROM wordpress:cli as wordpress-cli
-FROM php:fpm
+FROM php:7-fpm
 
 # install the PHP extensions we need
 RUN set -ex; \
